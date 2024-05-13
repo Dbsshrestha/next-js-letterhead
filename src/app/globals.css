@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-container {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 40px;
+    background-color: #f9f9f9;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 40px !important;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 3em;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.2em;
+  }
+
+  .form-control {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 60px;
+    border: 1px solid #ccc;
+  }
+
+  .logo-preview,
+  .signature-preview {
+    max-width: 150px;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  .btn-submit,
+  .button-generate,
+  .button-download {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-right: 40px;
+    margin-bottom: -95px;
+    margin-top: 10px;
+  }
+
+  .btn-submit:hover,
+  .button-generate:hover,
+  .button-download:hover {
+    background-color: #0056b3;
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    z-index: 1000;
+  }
+
+  .Button-submit {
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-top: 20px;
+  }
+
+  .qr-code {
+    margin-bottom: 0px;
+    width: 30px !important;
+    height: 20px !important;
+  }
+
+  .title-button {
+    margin-right: 10px;
+  }
+}
+
+.sky-modal {
+  background-color: rgb(219, 193, 193);
+  width: 300px; /* Adjust as needed */
+  margin: auto;
+}
+.side-modal {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px; /* Adjust as needed */
+  height: 150px; /* Adjust as needed */
+  max-height: 90vh; /* Adjust as needed */
+  overflow-y: auto; /* Add a scrollbar if the content overflows */
+  background-color: skyblue; /* Set the background color to sky blue */
+}
+
+
+
