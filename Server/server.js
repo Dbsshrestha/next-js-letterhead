@@ -8,15 +8,16 @@ const QRCode = require('qrcode');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const axios = require('axios');
 const multer = require('multer');
 const upload = multer();
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/Letterhead')
+mongoose.connect('mongodb://localhost:27017/Letterhead',)
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
-// MongoDB schemas
+// MongoDB schema
 const LetterheadSchema = new Schema({
   referenceNo: String,
   companyName: String,
@@ -54,14 +55,7 @@ app.get('/api/generateReferenceNumber', (req, res) => {
   res.json({ referenceNo });
 });
 
-
-
-app.post('/api/generatePDF', upload.fields([
-  { name: 'logoFile', maxCount: 1 }, 
-  { name: 'signatureFile', maxCount: 1 }
-]), async (req, res) => {
-  console.log('Received files:', req.files);
-  console.log('Received body:', req.body);
+app.post('/api/generatePDF', upload.fields([{ name: 'logoFile', maxCount: 1 }, { name: 'signatureFile', maxCount: 1 }]), async (req, res) => {
 
   const formData = req.body;
 
@@ -80,6 +74,7 @@ app.post('/api/generatePDF', upload.fields([
     signatureBlob: req.files.signatureFile ? req.files.signatureFile[0].buffer : undefined,
     qrCodeData: JSON.stringify(formData)
   });
+
 
   const doc = new jsPDF();
 
@@ -109,7 +104,7 @@ app.post('/api/generatePDF', upload.fields([
     const signatureData = letterhead.signatureBlob.toString('base64');
     doc.addImage(signatureData, 'JPEG', 10, 230, 40, 40);
   }
-
+  
   doc.text(formData.signerName, 10, 215);
   doc.text(formData.signerPosition, 10, 225);
 
